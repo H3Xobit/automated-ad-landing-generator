@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 88% 68% at 50% 38%, black 12%, transparent 72%);
+}
+
+@layer utilities {
+  @keyframes blob-float {
+    0%,
+    100% {
+      transform: translate(0%, 0%) scale(1);
+    }
+    33% {
+      transform: translate(6%, -8%) scale(1.05);
+    }
+    66% {
+      transform: translate(-5%, 5%) scale(0.98);
+    }
+  }
+
+  @keyframes blob-float-alt {
+    0%,
+    100% {
+      transform: translate(0%, 0%) scale(1);
+    }
+    50% {
+      transform: translate(-8%, 6%) scale(1.06);
+    }
+  }
+
+  .animate-blob {
+    animation: blob-float 22s ease-in-out infinite;
+  }
+
+  .animate-blob-alt {
+    animation: blob-float-alt 26s ease-in-out infinite;
+  }
+
+  .animate-blob-slow {
+    animation: blob-float 28s ease-in-out infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: -7s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: -14s;
+  }
+
+  .glass-panel {
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(20px) saturate(1.15);
+    -webkit-backdrop-filter: blur(20px) saturate(1.15);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+      0 4px 6px -1px rgba(0, 0, 0, 0.15),
+      0 24px 56px -28px rgba(0, 0, 0, 0.55);
+  }
+}
